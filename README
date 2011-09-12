@@ -1,0 +1,66 @@
+NAME
+    Plack::Middleware::Log::Handler - A logger middleware for Log::Hander
+    fan
+
+SYNOPSIS
+      use Plack::Builder;
+  
+      builder {
+          enable "LogWarn";
+          enable "Log::Handler",
+              file => {
+                  filename => 'logs/app.log',
+                  maxlevel => 'debug',
+              };
+  
+          $app;
+      };
+
+DESCRIPTION
+    Plack::Middleware::Log::Handler is a Plack::Middleware component that
+    allows you to use Log::Handler to configure logging object.
+
+CONFIGURATION
+    All arguments are passed to "Log::Handler->new()".
+
+    It means...
+
+      builder {
+          enable "Log::Handler" config => "config/logger.conf";
+          $app;
+      };
+
+    is equal to...
+
+      $logger = Log::Handler->new(config => "config/logger.conf");
+
+    And,
+
+      builder {
+          enable "Log::Handler"
+              file     => { ... },
+              file     => { ... },
+              sendmail => { ... },
+          ;
+      
+          $app;
+      };
+
+    this means...
+
+      $logger = Log::Handler->new(
+          file     => { ... },
+          file     => { ... },
+          sendmail => { ... },
+      );
+
+SEE ALSO
+    Log::Handler, Plack::Builder
+
+AUTHOR
+    Naoki Tomita <tomita@cpan.org>
+
+LICENSE
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
