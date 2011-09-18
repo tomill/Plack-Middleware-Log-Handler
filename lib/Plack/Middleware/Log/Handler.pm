@@ -91,6 +91,14 @@ this means...
       sendmail => { ... },
   );
 
+=head1 WHY ANOTHER Plack::Middleware::Log::Blabla
+
+I don't like the module that to use just another module like Foo::View::Blabla.
+I know this module is one of the Plack::Middleware::Log::Foobar module.
+But I recommend Log::Handler than Log::Dispatch or Log::Log4perl.
+Log::Handler is more configurable, fast, and flexible (I point "Forward").
+So, I wrote this module.
+
 =head1 SEE ALSO
 
 L<Log::Handler>, L<Plack::Builder>
